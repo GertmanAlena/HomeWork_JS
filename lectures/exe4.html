@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Здравствуй, мир!</title>
+    </head>
+
+<body>
+
+    <!-- Layout Создане модели-->
+
+    <div style="width: 50%">
+        <div style="width: 50%">Здравствуй, мир!</div>
+    </div>
+
+    <!-- Painting -->
+
+    <style>
+        .select__error {
+            border: 1px solid red;
+        }
+    </style>
+
+    <form class="form" action="city.html">
+        <div>
+            <label for="select">Город</label>
+            <select class="select" name="select" id="select">
+                <option class="option" value="city">Выберите город...</option>
+                <option class="option" value="Minsk">Минск</option>
+                <option class="option" value="Orsha">Орша</option>
+                <option class="option" value="Vitebsk">Витебск</option>
+                <option class="option" value="Mogilev">Могилёв</option>
+            </select>
+        </div>
+        <button type="submit" class="button">Выбрать</button>
+    </form>
+
+    <script>
+
+        const formEl = document.querySelector('.form');
+        const selectEl = formEl.querySelector('.select');
+        const buttonEl = formEl.querySelector('.button');
+
+        document.addEventListener('click', function (e) {
+            console.log(selectEl.value);
+            e.preventDefault();
+            if (selectEl.value === 'city') {
+                selectEl.classList.add('select__error'); //добавили класс стилей
+            } else {
+                selectEl.classList.remove('select__error');
+                return;
+            }
+        });
+        
+
+    </script>
+
+</body>
+
+</html>

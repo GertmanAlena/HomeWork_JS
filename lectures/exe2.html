@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form class="form" action="#">
+        <h2>Form</h2>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum facilis, neque magni velit reiciendis alias voluptatem sunt quae. Explicabo nam optio ipsum dolore sunt vero ullam, tempora aliquid excepturi fuga!</p>
+        <input id="checkbox" type="checkbox" class="check">
+        <label for="checkbox">
+         Согласен с условиями
+    </label>
+
+    <!-- этот div для вывода текста при ненажатии checkbox  -->
+    <div class="error"></div> 
+
+    <div>
+        <button type="submit">Отправить</button>
+    </div>
+    </form>
+
+    <script>
+
+        const inputEl = document.querySelector('.check');
+        const formEl = document.querySelector('.form');
+        const errorEl = formEl.querySelector('.error');
+
+        inputEl.addEventListener('click', function (e) {
+            const target = e.target;
+            console.log(target.value);  //on
+            console.log(target.checked);  // true or false выбран или не выбран
+        });
+
+        formEl.addEventListener('submit', function (e) {
+            //если элемент check выбран
+            // if (inputEl.checked) {
+            //     console.log("Ok");
+            // } else {
+            //     errorEl.textContent = 'Выбрать согласие с условиями';
+            //     e.preventDefault(); //остановили событие  
+            //     // console.log("остановили событие");           
+            // }
+            console.log(inputEl.checked ? 'OK' : 'NO');  //тоже, только коротко
+        });
+        
+        //отмена события через false
+        const checkbox = document.querySelector('input[type=checkbox]');
+        checkbox.addEventListener('click', (event) => {
+            console.log(`отмена события через return false ${event.target.checked}`); // true
+            return false;
+        })
+        
+        
+
+    </script>
+
+
+</body>
+
+</html>

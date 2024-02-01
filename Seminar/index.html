@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!--  1  --  В html создать элемент checkbox и текст рядом с ним “Согласен с условиями”
+    Добавить кнопку отправить
+    При клике на кнопку отправить нужно проверять выбран ли активным элемент checkbox
+    Если элемент не выбран, добавить текст под чекбоксом “Необходимо согласиться с условиями” -->
+    
+    <form class="form" action="#">
+        <input id="checkbox" type="checkbox" class="check">
+        <label for="checkbox">
+            Согласен с условиями
+        <div class="div"></div>
+        <button type="submit" class="button">Oтправить</button>
+    </form>
+    <br>
+    <script>
+
+        const formEl = document.querySelector('.form');
+        const checkEl = formEl.querySelector('.check');
+        const divEl = formEl.querySelector('.div');
+
+        formEl.addEventListener('submit', function (e) {
+            console.log((checkEl.checked) ? 'yes' : divEl.textContent = 'Необходимо согласиться с условиями');
+            e.preventDefault();
+        });
+    </script>
+
+    <!--   2    В html создать 2 элемента радио кнопки (input type=”radio”) и текст “Чай”, “Кофе” соответственно
+                Кнопка отправить
+                Если выбран чай, необходимо вывести сообщение “Чай закончился”
+                Если выбран кофе, необходимо вывести соообщение “кофе закончился” -->
+
+    <br>
+    <form class="form2" action="#">
+        <div class="divInput">
+            <input type="radio" id="tea" name="beverages" value="tea" />
+            <label for="tea">Чай</label>
+        
+            <input type="radio" id="coffe" name="beverages" value="coffe" />
+            <label for="coffe">Кофе</label>
+        </div>
+       
+        <div>
+            <button type="submit" class="button">Oтправить</button>
+            <div class="message"></div>
+        </div>
+    </form>
+    <br>
+    <script>
+        const formEl2 = document.querySelector('.form2'); 
+        const divInputEl = document.querySelector('.divInput'); 
+        const teaEl = document.getElementById('tea');
+        const coffeEl = document.getElementById('coffe');
+        const messageEl = document.querySelector('.message');
+
+        formEl2.addEventListener('submit', function (e) {
+            // console.log((teaEl.checked) ? 'Чай закончился' : divEl2.textContent = 'кофе закончился');
+
+            if (teaEl.checked) {
+                messageEl.textContent = 'Чай закончился';
+                teaEl.nodeValue = null;
+            } 
+            if (coffeEl.checked) {
+                messageEl.textContent = 'кофе закончился';
+                teaEl.nodeValue = null;
+            }
+            
+
+        });
+    </script>
+
+    <!--  3 ---  Создать поле ввода (пароль)
+        Кнопка отправить
+        Если пользователь вводит текст “пароль” то поле ввода должно быть подсвечено зеленым цветом
+        Если пароль неверный, у поля ввода появляется красная обводка и текст “пароль неверный” -->
+
+        <style>
+            .select__error {
+                border: 1px solid red;
+            }
+            .select__ok {
+                border: 1px solid green;
+            }
+        </style>
+    
+        <form class="formPassword" action="#">
+            <div>
+                <label>пароль</label>
+                <input class="password" type="password">
+            </div>
+            <button type="submit" class="buttonPass">Выбрать</button>
+            <p class="error"></p>
+        </form>
+        <br>
+        <script>
+
+            const formPasswordEl = document.querySelector('.formPassword');
+            const inputEl = formPasswordEl.querySelector('.password');
+            const buttonPassEl = formPasswordEl.querySelector('.buttonPass');
+            const errorEl = formPasswordEl.querySelector('.error');
+            const pass = "пароль";
+            const error = "пароль не верный";
+
+            console.log("************");
+            formPasswordEl.addEventListener('submit', function (e){
+                if (inputEl.value === pass) {
+                    inputEl.classList.add('select__ok');
+                }
+                else if(inputEl.value === ''){
+                    errorEl.textContent = 'вы ничего не ввели';
+                }
+                else {
+                    // inputEl.value = '';
+                    inputEl.classList.add('select__error');
+                    errorEl.textContent = error;
+                    
+                }
+            });
+            
+
+        </script>
+
+        <!-- 4  -- Создать поле ввода и под ним заголовок h1 с текстом “Заголовок”
+        При вводе текста в поле ввода необходимо чтобы текст внутри заголовка менятся на введенный в поле ввода -->
+        <form class="forma" action="#">
+            <div>
+                <input class="input5" type="text">
+                <h1 class="title">Заголовок</h1>
+            </div>
+        </form>
+
+        <script>
+
+            const formaEl = document.querySelector('.forma');
+            const input5El = document.querySelector('.input5');
+            const titleEl = document.querySelector('.title');
+
+            input5El.addEventListener('keydown', function (e) {
+                console.log(e);
+                titleEl.textContent = e.target.value;
+            });
+            
+
+        </script>
+
+</body>
+</html>
